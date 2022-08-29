@@ -1,19 +1,21 @@
 class Casino {
     // Write code here
-    constructor(name) {
+    constructor(name, fakeCoin) {
         this.name = name;
         this.timesPlayed = 0;
         this.winnings = 0;
+        this.fakeCoin = fakeCoin
     }
     
     playGame(betAmount) {
-        if (Math.random() <= 0.5) {
+        if (Math.random() <= 0.5 || this.fakeCoin) {
             console.log(`${this.name} + wins!`)
+            this.timesPlayed = 0
         } else {
             console.log(`You won ${betAmount} dollars from HackerU Casino!`)
             this.winnings = betAmount * (this.timesPlayed + 1)
+            this.timesPlayed += 1;
         }
-        this.timesPlayed++
     }
 };
 
